@@ -1,12 +1,12 @@
 const express = require('express');
-require('dotenv').config();
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const authRoute = require('./routes/auth');
 // use middleware
 app.use(express.json());
-// const userRoute = require('./routes/user');
 
 // connect mongodb
 mongoose
@@ -15,7 +15,7 @@ mongoose
   .catch((err) => console.log(err.message));
 
 // calling apis
-// app.use('/api/user', userRoute);
+app.use('/api/auth', authRoute);
 
 // creating server
 app.listen(PORT, () => {
