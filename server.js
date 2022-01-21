@@ -1,10 +1,15 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const authRoute = require('./routes/auth');
+const userRoute = require('./routes/user');
+const productRoute = require('./routes/product');
+const cartRoute = require('./routes/cart');
+const orderRoute = require('./routes/order');
+
 // use middleware
 app.use(express.json());
 
@@ -16,6 +21,10 @@ mongoose
 
 // calling apis
 app.use('/api/auth', authRoute);
+app.use('/api/users', userRoute);
+app.use('/api/products', productRoute);
+app.use('/api/cart', cartRoute);
+app.use('/api/orders', orderRoute);
 
 // creating server
 app.listen(PORT, () => {
