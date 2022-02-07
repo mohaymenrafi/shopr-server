@@ -30,6 +30,10 @@ app.use('/api/cart', cartRoute);
 app.use('/api/orders', orderRoute);
 app.use('/api/checkout', stripeRoute);
 
+app.get('/', (req, res) => {
+  res.send('Shopr server is running... ');
+});
+
 // creating server
 app.listen(PORT, () => {
   console.log('server is running at: ', PORT);
